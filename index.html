@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header class="header">
+        <i class="fa fa-clock header-icon"></i>
+        <i class="fa fa-bars hamburger" onclick="toggleMenu()"></i> <!-- Hamburger Icon -->
+        <nav class="header-nav">
+            <a href="#pomodoro" class="nav-link">Pomodoro</a>
+            <a href="#short-break" class="nav-link">Short Break</a>
+            <a href="#long-break" class="nav-link">Long Break</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="section-container">
+            <button id="focus" class="btn btn-timer btn-focus">Pomodoro</button>
+            <button id="shortbreak" class="btn btn-shortbreak">Short Break</button>
+            <button id="longbreak" class="btn btn-longbreak">Long Break</button>
+        </div>
+        <div class="time-btn-container">
+            <span id="time"></span>
+            <div class="btn-container">
+                <button id="btn-start" class="show">Start</button>
+                <button id="btn-pause" class="hide">Pause</button>
+                <button id="btn-reset" class="hide">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 Pomodoro Timer. All rights reserved.</p>
+    </footer>
+
+    <!-- Script for menu toggle -->
+    <script>
+    function toggleMenu() {
+        var nav = document.querySelector('.header-nav');
+        if (nav.classList.contains('active')) {
+            nav.classList.remove('active');
+        } else {
+            nav.classList.add('active');
+        }
+    }
+    </script>
+    <!-- Script -->
+    <script src="/script.js"></script>
+</body>
+</html>
