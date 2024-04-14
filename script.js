@@ -13,6 +13,10 @@ let paused = true;
 let minCount = 24;
 time.textContent = `${minCount + 1}:00`;
 
+// Sound effects
+const timerTick = new Audio('assets/audio/timer.wav');
+const alarm = new Audio('assets/audio/alarm.wav');
+
 const appendZero = (value) => {
   value = value < 10 ? `0${value}` : value;
   return value;
@@ -102,6 +106,7 @@ startBtn.addEventListener("click", () => {
     paused = false;
     time.textContent = `${appendZero(minCount)}:${appendZero(count)}`;
     set = setInterval(() => {
+      timerTick.play(); 
       count--;
       time.textContent = `${appendZero(minCount)}:${appendZero(count)}`;
       if (count == 0) {
@@ -110,8 +115,23 @@ startBtn.addEventListener("click", () => {
           count = 60;
         } else {
           clearInterval(set);
+          alarm.play();
         }
       }
     }, 1000);
   }
+});
+
+function toggleMenu() {
+    var nav = document.querySelector('.header-nav');
+    if (nav.classList.contains('active')) {
+        nav.classList.remove('active');
+    } else {
+        nav.classList.add('active');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  var currentYear = new Date().getFullYear(); // Get the current year
+  document.getElementById('year').textContent = currentYear; // Set the current year in the span
 });
