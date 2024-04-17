@@ -135,3 +135,16 @@ document.addEventListener('DOMContentLoaded', function () {
   var currentYear = new Date().getFullYear(); // Get the current year
   document.getElementById('year').textContent = currentYear; // Set the current year in the span
 });
+
+function updateClock() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+  const milliseconds = String(now.getMilliseconds()).padStart(3, '0');
+  const timeString = `${hours}:${minutes}:${seconds}:${milliseconds}`;
+  document.getElementById('clock').textContent = timeString;
+}
+
+setInterval(updateClock, 1); // Update the time as fast as possible, roughly every millisecond
+updateClock(); // Initialize to set time immediately on page load

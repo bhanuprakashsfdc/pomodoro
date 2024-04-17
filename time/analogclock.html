@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .analog {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border: 16px solid #C25C5C;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .analog::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #333;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        .hand {
+            position: absolute;
+            bottom: 50%;
+            width: 50%;
+            height: 6px;
+            background-color: #333;
+            border-radius: 6px;
+            transform-origin: 100%;
+            transform: rotate(90deg);
+            transition: transform 0.05s cubic-bezier(0.4, 2.3, 0.3, 1);
+        }
+        #hour-hand {
+            width: 30%;
+            background-color: #333;
+            left: 75px;
+        }
+        #minute-hand {
+            background-color: #D4D4D2;
+            height: 4px;
+            left: 0px;
+        }
+        #second-hand {
+            background-color: #D40000;
+            height: 2px;
+            left: 0px;
+            z-index: 8;
+        }
+
+        .clock{
+            text-align: center;
+              color: #ffffff;
+              font-size: 5em;
+              font-weight: 700;
+          }
+
+    
+        @media (max-width: 768px) {
+            .analog{
+                width: 300px;
+                height: 300px;
+            }
+            .analog-container {
+                background-color: black;
+                top: 280px;
+            }
+
+            .analog-content{
+                top: 430px;
+            }
+            .clock{
+                font-size: 3em;
+            }
+
+            #hour-hand {
+                width: 30%;
+                background-color: #333;
+                left: 50px;
+            }
+        }
+    </style>
+</head>
+<body class="clockbody">
+    <header class="header">
+        <i class="fa fa-clock header-icon"></i>
+        <i class="fa fa-bars hamburger" onclick="toggleMenu()"></i> 
+        <nav class="header-nav">
+            <a href="#pomodoro" class="nav-link">Pomodoro</a>
+            <a href="#short-break" class="nav-link">Short Break</a>
+            <a href="#long-break" class="nav-link">Long Break</a>
+        </nav>
+    </header>
+
+    <div class="analog-container">
+        <div class="clock-btn-container">
+                <div class="analog">
+                    <div id="hour-hand" class="hand"></div>
+                    <div id="minute-hand" class="hand"></div>
+                    <div id="second-hand" class="hand"></div>
+                </div>
+        </div>
+    </div>
+    <div class="analog-content">
+    <div class="clock" id="clock">00:00:00:000</div>
+   </div>
+    <footer class="footer">
+        <p>© <span id="year"></span> Pomodoro Timer. All rights reserved.</p>
+    </footer>
+    <!-- Script -->
+    <script src="/script.js"></script>
+    <!-- Script to update the time -->
+    <script>
+        const hourHand = document.getElementById('hour-hand');
+        const minuteHand = document.getElementById('minute-hand');
+        const secondHand = document.getElementById('second-hand');
+
+        function updateAnalogClock() {
+            const now = new Date();
+            const seconds = now.getSeconds();
+            const minutes = now.getMinutes();
+            const hours = now.getHours();
+
+            const secondsDegrees = ((seconds / 60) * 360) + 90; // Offset by 90 degrees to start at the top
+            const minutesDegrees = ((minutes / 60) * 360) + ((seconds / 60) * 6) + 90;
+            const hoursDegrees = ((hours / 12) * 360) + ((minutes / 60) * 30) + 90;
+
+            secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+            minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
+            hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+        }
+
+        setInterval(updateAnalogClock, 1000);
+        updateAnalogClock(); // Initialize to set the correct time immediately
+
+
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const milliseconds = String(now.getMilliseconds()).padStart(3, '0');
+            const amPm = hours >= 12 ? 'PM' : 'AM';
+
+            hours = hours % 12; // Convert hour to 12-hour format
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+
+            const timeString = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${amPm}`;
+            document.getElementById('clock').textContent = timeString;
+        }
+
+        setInterval(updateClock, 1); // Update the time approximately every millisecond
+        updateClock(); // Initialize to set time immediately on page load
+    </script>s
+    </script>
+</body>
+</html>
