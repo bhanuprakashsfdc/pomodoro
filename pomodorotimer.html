@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <i class="fa fa-clock header-icon"></i>
+        <i class="fa fa-bars hamburger" onclick="toggleMenu()"></i> <!-- Hamburger Icon -->
+        <nav class="header-nav">
+            <a href="#pomodoro" class="nav-link">Pomodoro</a>
+            <a href="#short-break" class="nav-link">Short Break</a>
+            <a href="#long-break" class="nav-link">Long Break</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="section-container">
+            <button id="focus" class="btn btn-timer btn-focus">Pomodoro</button>
+            <button id="shortbreak" class="btn btn-shortbreak">Short Break</button>
+            <button id="longbreak" class="btn btn-longbreak">Long Break</button>
+        </div>
+        <div class="time-btn-container">
+            <span id="time"></span>
+            <div class="btn-container">
+                <button id="btn-start" class="show">Start</button>
+                <button id="btn-pause" class="hide">Pause</button>
+                <button id="btn-reset" class="hide">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <article class="article">
+            <section>
+                <h2>Introduction to the Pomodoro Timer</h2>
+                <p>
+                    In our fast-paced world, managing time efficiently is crucial for both personal and professional growth. The Pomodoro Technique, developed by Francesco Cirillo in the late 1980s, is a time management method that has gained widespread popularity for its simplicity and effectiveness. This technique uses a timer to break work into intervals, traditionally 25 minutes in length, separated by short breaks. These intervals are known as "Pomodoros."
+                </p>
+            </section>
+
+            <section>
+                <h2>What is a Pomodoro Timer?</h2>
+                <p>
+                    A Pomodoro timer is a simple yet powerful tool to help manage your working sessions. It alternates work periods with short rest breaks to maximize concentration and minimize fatigue. Each work session is followed by a 5-minute break, and every fourth break is extended to 15-30 minutes, providing a longer respite.
+                </p>
+            </section>
+
+            <section>
+                <h2>How Does It Help?</h2>
+                <ul>
+                    <li>Enhancing Focus: Short, timed sessions help you stay focused on tasks without getting burnt out.</li>
+                    <li>Increasing Productivity: Regular breaks ensure that your mind stays fresh, allowing you to maintain a high level of productivity throughout the day.</li>
+                    <li>Reducing Procrastination: Knowing you only have to focus for a short period makes daunting tasks seem more manageable.</li>
+                    <li>Improving Time Management: By tracking how many Pomodoros it takes to complete tasks, you can better estimate the time needed for future tasks.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Building a Pomodoro Timer with HTML</h2>
+                <p>
+                    The following HTML code provides the structure for a basic Pomodoro timer web application. This application features buttons to start, pause, and reset the timer, and it includes options for different session types: a focus session, a short break, and a long break.
+                </p>
+            </section>
+        </article>
+    </div>
+    <footer class="footer">
+        <p>© <span id="year"></span> Pomodoro Timer. All rights reserved.</p>
+    </footer>
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
