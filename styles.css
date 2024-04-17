@@ -120,7 +120,7 @@
     color: #ffffff;
     font-size: 18em;
     font-weight: 700;
-    padding: 10% 0;
+  /*  padding: 10% 0; */
     
 }
 
@@ -162,6 +162,11 @@
 
 .clockbody{
   background-color: black;
+}
+
+.locationName{
+  color:white;
+
 }
 
 @media (max-width: 768px) {
