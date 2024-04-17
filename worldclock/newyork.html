@@ -38,11 +38,12 @@
     <!-- Script to update the time -->
     <script>
         function updateClock() {
-            const now = new Date();
-            let hours = now.getHours();
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            const milliseconds = String(now.getMilliseconds()).padStart(3, '0');
+            // Create a new Date object for the current time in New York
+            var now = new Date();
+            var Time = new Date(now.toLocaleString("en-US", {timeZone: "America/New_York"}));
+            let hours = Time.getHours();
+            const minutes = String(Time.getMinutes()).padStart(2, '0');
+            const seconds = String(Time.getSeconds()).padStart(2, '0');
             const amPm = hours >= 12 ? 'PM' : 'AM';
 
             hours = hours % 12; // Convert hour to 12-hour format
@@ -50,10 +51,10 @@
 
             const timeString = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${amPm}`;
             document.getElementById('clock').textContent = timeString;
-            document.title = "Time is " + timeString +" - Pomodoro24.com ";
+            document.title = "New York Time: " + timeString +" - Pomodoro24.com";
         }
 
-        setInterval(updateClock, 1); // Update the time approximately every millisecond
+        setInterval(updateClock, 1000); // Update the time every second for consistency
         updateClock(); // Initialize to set time immediately on page load
     </script>
 </body>

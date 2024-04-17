@@ -116,10 +116,12 @@
 }
 /* Live clock */
 .clock{
-  text-align: center;
+    text-align: center;
     color: #ffffff;
-    font-size: 5em;
+    font-size: 18em;
     font-weight: 700;
+    padding: 10% 0;
+    
 }
 
 .clock-btn-container{
