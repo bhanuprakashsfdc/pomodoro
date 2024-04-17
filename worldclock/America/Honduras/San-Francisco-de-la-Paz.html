@@ -1,1 +1,67 @@
-<html><head><title>San-Francisco-de-la-Paz</title></head><body><h1>San-Francisco-de-la-Paz</h1></body></html>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        
+    </style>
+</head>
+<body class="clockbody">
+    <header class="header">
+        <i class="fa fa-clock header-icon"></i>
+        <i class="fa fa-bars hamburger" onclick="toggleMenu()"></i> <!-- Hamburger Icon -->
+        <nav class="header-nav">
+            <a href="#pomodoro" class="nav-link">Pomodoro</a>
+            <a href="#short-break" class="nav-link">Short Break</a>
+            <a href="#long-break" class="nav-link">Long Break</a>
+        </nav>
+    </header>
+
+    <div class="">
+        <div class="mobilview">
+            <div>
+                <p class="locationName"> Time in <span id="locationName">loc</span> is </p>
+            </div>
+            <div class="clock" id="clock">00:00:00:000</div>
+            <div>
+                <p class="timeName"> Time in 
+                    <span id="weekInfo">weekInfo</span> , 
+                    <span id="dayInfo">dayInfo</span> , 
+                    <span id="monthInfo">monthInfo</span>,
+                    <span id="yearInfo">yearInfo</span> , 
+                    Week <span id="weeknumInfo">weeknumInfo</span> 
+                </p>
+                <p class="mobilespace"></p>
+                <!-- World Clocks -->
+                <div class="locationName">
+                    <div id="city1" class="time-box"><div class="city-name">San Jose</div><div class="city-time"></div></div>
+                    <div id="city2" class="time-box"><div class="city-name">New York</div><div class="city-time"></div></div>
+                    <div id="city3" class="time-box"><div class="city-name">London</div><div class="city-time"></div></div>
+                    <div id="city4" class="time-box"><div class="city-name">Dubai</div><div class="city-time"></div></div>
+                    <div id="city5" class="time-box"><div class="city-name">Kolkata</div><div class="city-time"></div></div>
+                    <div id="city6" class="time-box"><div class="city-name">Singapore</div><div class="city-time"></div></div>
+                    <div id="city7" class="time-box"><div class="city-name">Melbourne</div><div class="city-time"></div></div>
+                    <div id="city8" class="time-box"><div class="city-name">Tokyo</div><div class="city-time"></div></div>
+                </div>
+                <p class="mobilespace"></p>
+
+            </div>
+            <div class="date-info" id="dateInfo"></div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>© <span id="year"></span> Pomodoro Timer. All rights reserved.</p>
+    </footer>
+    <!-- Script -->
+    <script src="/script.js"></script>
+</body>
+</html>
+    
