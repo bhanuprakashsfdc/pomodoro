@@ -165,8 +165,38 @@
 }
 
 .locationName{
-  color:white;
+  color: white;
+  font-size: 40px;
+  font-weight: 700;
+  padding: 0 20px;
 
+}
+
+.timeName{
+  text-align: right;
+  color: white;
+  font-size: 40px;
+  font-weight: 700;
+  padding: 0 20px;
+}
+
+.time-box {
+  padding: 10px;
+  margin: 10px;
+  background-color: #181717;;
+  border: 1px solid #ddd;
+  text-align: center;
+  width: 150px;
+  float: left;
+}
+
+.city-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.city-time {
+  font-size: 14px;
 }
 
 @media (max-width: 768px) {
@@ -210,6 +240,26 @@
 
     .btn {
       font-size: 12px;
+    }
+
+    .clock{
+      font-size: 5em;
+    }
+    .locationName, .timeName{
+      font-size: 22px;
+    }
+    .mobilview{
+      top: 180px;
+      position: relative;
+    }
+    .time-box {
+      width: 146px;
+    }
+    .time-box {
+      padding: 25px;
+    }
+    .mobilespace{
+      padding: 50px;
     }
 }
 
