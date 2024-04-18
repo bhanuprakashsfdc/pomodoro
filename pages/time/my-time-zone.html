@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <style>
+        
+    </style>
+</head>
+<body class="clockbody">
+    <header class="header">
+        <i class="fa fa-clock header-icon"></i>
+        <i class="fa fa-bars hamburger" onclick="toggleMenu()"></i> <!-- Hamburger Icon -->
+        <nav class="header-nav">
+            <a href="#pomodoro" class="nav-link">Pomodoro</a>
+            <a href="#short-break" class="nav-link">Short Break</a>
+            <a href="#long-break" class="nav-link">Long Break</a>
+        </nav>
+    </header>
+
+    <div class="">
+        <div class="">
+            <div class="clock" id="clock">00:00:00:000</div>
+        </div>
+    </div>
+    <div class="ip-zone">
+        <p>Your time zone: <span id="timezone"></span></p>
+        <p>Your IP address is <span id="ip-address">Loading...</span> indicates that you are in Hyderabad, India.</p>
+        <!--
+        <p>Hyderabad has not had daylight saving time since 1945.</p>
+        <p>The IANA time zone identifier for Hyderabad is Asia/Kolkata.</p>
+        -->
+    </div>
+
+    <footer class="footer">
+        <p>© <span id="year"></span> Pomodoro Timer. All rights reserved.</p>
+    </footer>
+    <!-- Script -->
+    <script src="/assets/js/liveclockscript.js"></script>
+    <!-- Script -->
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/timescript.js"></script>
+    
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-R32NHWZ7MQ"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R32NHWZ7MQ');
+
+                // Display timezone information dynamically
+                document.getElementById('timezone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+        </script>
+        <script>
+            // Displaying ip address and City name
+            document.addEventListener('DOMContentLoaded', function () {
+                fetch('https://api.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('ip-address').textContent = data.ip;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching IP:', error);
+                        document.getElementById('ip-address').textContent = 'Error fetching IP';
+                    });
+            });
+            
+        </script>
+</body>
+</html>
