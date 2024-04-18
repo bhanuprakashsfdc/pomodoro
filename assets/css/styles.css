@@ -140,25 +140,7 @@
   border-radius: 0.5em;
 }
 
-/* Anlog and digital in same page */
-.analog-container {
-  background-color: black; 
-  width: min(90%, 600px);
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 400px;
-  left: 50%;
-  padding: 4em 2em;
-  border-radius: 0.5em;
-}
 
-.analog-content{
-  position: relative;
-  padding: 0em 2em;
-  top: 580px;
-  background: black;
-  position: relative;
-}
 
 .clockbody{
   background-color: black;
