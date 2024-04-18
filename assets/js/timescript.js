@@ -1,6 +1,20 @@
+const WEBSITE_NAME = "Pomodoro24.com";
+
+function getPageName() {
+    const path = window.location.pathname;
+    const page = path.split("/").pop();  // Gets the last part of the path
+    let pageName = page.split('.')[0].replace(/-/g, ' ');  // Removes the file extension and replaces dashes with spaces
+
+    // Capitalize the first letter of each word
+    pageName = pageName.split(' ')
+                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ');
+    return pageName;  // Returns the capitalized page name
+}
+
 function updateClock() {
-    // Create a new Date object for the current time in London
-    var timeZone = "Africa/Algiers";
+    // Create a new Date object for the current time in dynamic
+    var timeZone = document.body.getAttribute('data-timezone');
     var now = new Date();
     var Time = new Date(now.toLocaleString("en-US", {timeZone: timeZone}));
     let hours = Time.getHours();
@@ -14,8 +28,11 @@ function updateClock() {
 
     // Set the document title including the page name
     const pageName = getPageName();
-    document.title = pageName + " Time is " + timeString + " - Pomodoro24.com";
+    document.title = pageName + " Time is " + timeString  + " - "+WEBSITE_NAME;
     document.getElementById('locationName').textContent = pageName;
+
+    const descriptionContent = pageName + " Time is " + timeString  + " - "+WEBSITE_NAME;
+    document.querySelector('meta[name="description"]').setAttribute('content', descriptionContent);
 
     // Date information
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
