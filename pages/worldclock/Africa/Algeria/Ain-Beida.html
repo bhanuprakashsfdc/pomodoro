@@ -1,0 +1,146 @@
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        
+    </style>
+</head>
+<body class="clockbody">
+    <header class="header">
+        <i class="fa fa-clock header-icon"></i>
+        <i class="fa fa-bars hamburger" onclick="toggleMenu()"></i> <!-- Hamburger Icon -->
+        <nav class="header-nav">
+            <a href="#pomodoro" class="nav-link">Pomodoro</a>
+            <a href="#short-break" class="nav-link">Short Break</a>
+            <a href="#long-break" class="nav-link">Long Break</a>
+        </nav>
+    </header>
+
+    <div class="">
+        <div class="mobilview">
+            <div>
+                <p class="locationName"> Time in <span id="locationName">loc</span> is </p>
+            </div>
+            <div class="clock" id="clock">00:00:00:000</div>
+            <div>
+                <p class="timeName"> Time in 
+                    <span id="weekInfo">weekInfo</span> , 
+                    <span id="dayInfo">dayInfo</span> , 
+                    <span id="monthInfo">monthInfo</span>,
+                    <span id="yearInfo">yearInfo</span> , 
+                    Week <span id="weeknumInfo">weeknumInfo</span> 
+                </p>
+                <p class="mobilespace"></p>
+                <!-- World Clocks -->
+                <div class="locationName">
+                    <div id="city1" class="time-box"><div class="city-name">San Jose</div><div class="city-time"></div></div>
+                    <div id="city2" class="time-box"><div class="city-name">New York</div><div class="city-time"></div></div>
+                    <div id="city3" class="time-box"><div class="city-name">London</div><div class="city-time"></div></div>
+                    <div id="city4" class="time-box"><div class="city-name">Dubai</div><div class="city-time"></div></div>
+                    <div id="city5" class="time-box"><div class="city-name">Kolkata</div><div class="city-time"></div></div>
+                    <div id="city6" class="time-box"><div class="city-name">Singapore</div><div class="city-time"></div></div>
+                    <div id="city7" class="time-box"><div class="city-name">Melbourne</div><div class="city-time"></div></div>
+                    <div id="city8" class="time-box"><div class="city-name">Tokyo</div><div class="city-time"></div></div>
+                </div>
+                <p class="mobilespace"></p>
+
+            </div>
+            <div class="date-info" id="dateInfo"></div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>© <span id="year"></span> Pomodoro Timer. All rights reserved.</p>
+    </footer>
+    <!-- Script -->
+    <script src="/script.js"></script>
+ <!-- Script to update the time -->
+ <script>
+    function getPageName() {
+        const path = window.location.pathname;
+        const page = path.split("/").pop();  // Gets the last part of the path
+        let pageName = page.split('.')[0].replace(/-/g, ' ');  // Removes the file extension and replaces dashes with spaces
+
+        // Capitalize the first letter of each word
+        pageName = pageName.split(' ')
+                            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                            .join(' ');
+        return pageName;  // Returns the capitalized page name
+    }
+
+    function updateClock() {
+        // Create a new Date object for the current time in London
+        var timeZone = "Africa/Algiers";
+        var now = new Date();
+        var Time = new Date(now.toLocaleString("en-US", {timeZone: timeZone}));
+        let hours = Time.getHours();
+        const minutes = String(Time.getMinutes()).padStart(2, '0');
+        const seconds = String(Time.getSeconds()).padStart(2, '0');
+        const amPm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12; // Convert hour to 12-hour format
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        const timeString = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${amPm}`;
+        document.getElementById('clock').textContent = timeString;
+
+        // Set the document title including the page name
+        const pageName = getPageName();
+        document.title = pageName + " Time is " + timeString + " - Pomodoro24.com";
+        document.getElementById('locationName').textContent = pageName;
+
+        // Date information
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const dayOfWeek = days[Time.getDay()];
+        const date = Time.getDate();
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const month = months[Time.getMonth()];
+        const year = Time.getFullYear();
+        // Calculate week number
+        const start = new Date(Time.getFullYear(), 0, 0);
+        const diff = Time - start;
+        const oneWeek = 1000 * 60 * 60 * 24 * 7;
+        const week = Math.floor(diff / oneWeek);
+        document.getElementById('weekInfo').textContent = dayOfWeek;
+        document.getElementById('dayInfo').textContent = date;
+        document.getElementById('monthInfo').textContent = month;
+        document.getElementById('yearInfo').textContent = year;
+        document.getElementById('weeknumInfo').textContent = week;
+
+
+        const cities = [
+            { id: 1, name: 'San Jose', timeZone: 'America/Los_Angeles' },
+            { id: 2, name: 'New York', timeZone: 'America/New_York' },
+            { id: 3, name: 'London', timeZone: 'Europe/London' },
+            { id: 4, name: 'Dubai', timeZone: 'Asia/Dubai' },
+            { id: 5, name: 'Kolkata', timeZone: 'Asia/Kolkata' },
+            { id: 6, name: 'Singapore', timeZone: 'Asia/Singapore' },
+            { id: 7, name: 'Melbourne', timeZone: 'Australia/Melbourne' },
+            { id: 8, name: 'Tokyo', timeZone: 'Asia/Tokyo' }
+        ];
+        
+        cities.forEach(city => {
+            const cityTime = new Date(now.toLocaleString("en-US", {timeZone: city.timeZone}));
+            let cityHours = cityTime.getHours();
+            const cityMinutes = String(cityTime.getMinutes()).padStart(2, '0');
+         //   const citySeconds = String(cityTime.getSeconds()).padStart(2, '0');
+            const cityAmPm = cityHours >= 12 ? 'PM' : 'AM';
+            cityHours = cityHours % 12;
+            cityHours = cityHours ? cityHours : 12;
+            const cityTimeString = `${cityHours}:${cityMinutes} ${cityAmPm}`;
+          document.querySelector(`#city${city.id} .city-time`).textContent = cityTimeString;
+          document.querySelector(`#city${city.id} .city-name`).textContent = city.name; 
+        });
+    }
+    setInterval(updateClock, 1000); // Update the time every second for consistency
+    updateClock(); // Initialize to set time immediately on page load
+</script>
+</body>
+</html>
+    
