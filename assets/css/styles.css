@@ -180,6 +180,12 @@
 .city-time {
   font-size: 14px;
 }
+.ip-zone{
+  text-align: center;
+    color: #ffffff;
+    font-size: 2em;
+    font-weight: 700;
+}
 
 @media (max-width: 768px) {
     .hamburger {
