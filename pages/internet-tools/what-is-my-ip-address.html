@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/ipaddress.css">
+    <style>
+        
+    </style>
+</head>
+<body class="clockbody">
+    <header class="header">
+        <i class="fa fa-clock header-icon"></i>
+        <i class="fa fa-bars hamburger" onclick="toggleMenu()"></i> <!-- Hamburger Icon -->
+        <nav class="header-nav">
+            <a href="#pomodoro" class="nav-link">Pomodoro</a>
+            <a href="#short-break" class="nav-link">Short Break</a>
+            <a href="#long-break" class="nav-link">Long Break</a>
+        </nav>
+    </header>
+
+    <div class="">
+        <div class="">
+            <div class="clock" id="clock">00:00:00:000</div>
+        </div>
+    </div>
+    
+    <h1>IP Information Display</h1>
+    <div class="info-table">
+        <div class="info-row"><div class="info-name">IP Address:</div><div class="info-value" id="ip"></div></div>
+        <div class="info-row"><div class="info-name">City:</div><div class="info-value" id="city"></div></div>
+        <div class="info-row"><div class="info-name">Region:</div><div class="info-value" id="region"></div></div>
+        <div class="info-row"><div class="info-name">Country:</div><div class="info-value" id="country"></div></div>
+        <div class="info-row"><div class="info-name">ZIP Code:</div><div class="info-value" id="zip"></div></div>
+        <div class="info-row"><div class="info-name">Latitude:</div><div class="info-value" id="lat"></div></div>
+        <div class="info-row"><div class="info-name">Longitude:</div><div class="info-value" id="lon"></div></div>
+        <div class="info-row"><div class="info-name">Timezone:</div><div class="info-value" id="timezone"></div></div>
+        <div class="info-row"><div class="info-name">ISP:</div><div class="info-value" id="isp"></div></div>
+        <div class="info-row"><div class="info-name">Organization:</div><div class="info-value" id="org"></div></div>
+    </div>
+
+    <footer class="footer">
+        <p>© <span id="year"></span> Pomodoro Timer. All rights reserved.</p>
+    </footer>
+    <!-- Script -->
+    <script src="/assets/js/liveclockscript.js"></script>
+    <!-- Script -->
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/timescript.js"></script>
+    <script src="/assets/js/ipInfo.js"></script>
+    
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-R32NHWZ7MQ"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R32NHWZ7MQ');
+
+                // Display timezone information dynamically
+                document.getElementById('timezone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+        </script>
+        <script>
+            // Displaying ip address and City name
+            document.addEventListener('DOMContentLoaded', function () {
+                fetch('https://api.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('ip-address').textContent = data.ip;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching IP:', error);
+                        document.getElementById('ip-address').textContent = 'Error fetching IP';
+                    });
+            });
+            
+        </script>
+</body>
+</html>
