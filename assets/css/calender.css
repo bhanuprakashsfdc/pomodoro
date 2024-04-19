@@ -1,0 +1,82 @@
+/* Basic Page Styling */
+/*
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    text-align: center;
+    background-color: #f4f4f4;
+    color: #333;
+}
+*/
+h1 {
+    color: #333;
+}
+
+/* Styling for the select dropdown */
+select {
+    padding: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Table Styles for the Calendar */
+table {
+    width: 100%;
+    max-width: 100%; /* Ensure table does not exceed its container */
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: black;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th {
+    background-color: rgb(209, 108, 108);
+}
+
+/* Highlight today's date */
+.today {
+    background-color: #ffdd57;
+}
+
+/* Responsive Grid Layout for Calendar Months */
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 35px;
+}
+
+.today {
+    background-color: #ffdd57 !important; /* Bright yellow background for today's date */
+    color: #000000 !important; /* Black text to ensure readability */
+    font-weight: bold; /* Make the date bold */
+}
+
+/* Media Queries for Responsive Adjustments */
+@media (max-width: 768px) {
+    #calendar {
+        grid-template-columns: 1fr; /* Single column for mobile devices */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    #calendar {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
+    }
+}
+
+@media (min-width: 1025px) {
+    #calendar {
+        grid-template-columns: repeat(3, 1fr); /* Three columns for desktops */
+        font-size: 20px;
+    }
+}
