@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/calender.css">
+    <style>
+        
+    </style>
+</head>
+<body class="clockbody">
+    <header class="header">
+        <i class="fa fa-clock header-icon"></i>
+        <i class="fa fa-bars hamburger" onclick="toggleMenu()"></i> <!-- Hamburger Icon -->
+        <nav class="header-nav">
+            <a href="#pomodoro" class="nav-link">Pomodoro</a>
+            <a href="#short-break" class="nav-link">Short Break</a>
+            <a href="#long-break" class="nav-link">Long Break</a>
+        </nav>
+    </header>
+
+    <div class="">
+        <div class="">
+            <div class="clock" id="clock">00:00:00:000</div>
+        </div>
+    </div>
+    <div class="timezone-info">
+        <p id="currentDateTime">Today's Date and Time: </p>
+        <select id="yearSelect">
+            <!-- Year options will be dynamically populated -->
+        </select>
+    
+        <div id="calendar"></div>
+    </div>
+    <footer class="footer">
+        <p>© <span id="year"></span> Pomodoro Timer. All rights reserved.</p>
+    </footer>
+    <!-- Script -->
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/timescript.js"></script>
+    <script src="/assets/js/calender.js"></script>
+    <!-- Script to update the time -->
+    <script>
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const milliseconds = String(now.getMilliseconds()).padStart(3, '0');
+            const amPm = hours >= 12 ? 'PM' : 'AM';
+
+            hours = hours % 12; // Convert hour to 12-hour format
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+
+            const timeString = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${amPm}`;
+            document.getElementById('clock').textContent = timeString;
+            document.title = "Time is " + timeString +" - Pomodoro24.com ";
+        }
+
+        setInterval(updateClock, 1); // Update the time approximately every millisecond
+        updateClock(); // Initialize to set time immediately on page load
+    </script>
+</body>
+</html>
