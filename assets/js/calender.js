@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentYear = today.getFullYear();
         const currentMonth = today.getMonth();
         const currentDate = today.getDate();
-        alert('today:::'+today);
         // Months and weekdays
         const months = ["January", "February", "March", "April", "May", "June",
                         "July", "August", "September", "October", "November", "December"];
