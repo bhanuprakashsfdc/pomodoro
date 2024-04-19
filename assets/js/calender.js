@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Highlight today's date if the current table represents this month and year
                 if (day === currentDate && monthIndex === currentMonth && year === currentYear) {
-                    alert('today:::'+today);
                     cell.classList.add('today');                
                 }
             }
