@@ -1,0 +1,32 @@
+.info-table {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.info-row {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+}
+
+.info-name, .info-value {
+    padding: 10px;
+    flex: 1;
+}
+
+.info-name {
+    background-color: #f9f9f9;
+    font-weight: bold;
+    color: #555;
+}
+
+.info-value {
+    text-align: left;
+    background-color: #ffffff;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
