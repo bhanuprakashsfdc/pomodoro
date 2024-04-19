@@ -1,4 +1,3 @@
-
 // Js utlisites in what is my ip address and my-timezone.html
 document.addEventListener('DOMContentLoaded', function () {
     // Fetch the IP address from ipify
