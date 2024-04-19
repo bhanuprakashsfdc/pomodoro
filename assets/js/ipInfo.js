@@ -1,16 +1,24 @@
+// Js utlisites in what is my ip address and my-timezone.html
 document.addEventListener('DOMContentLoaded', function () {
-    const ip = '106.213.116.204';  // Example IP address
-    const url = `http://ip-api.com/json/${ip}`;
+    // Fetch the IP address from ipify
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('ip-address').textContent = data.ip;
+            // Using the fetched IP address to get more detailed IP info
+            const url = `http://ip-api.com/json/${data.ip}`;
 
-    fetch(url)
+            return fetch(url);  // Return the fetch promise to chain the next .then()
+        })
         .then(response => {
             if (!response.ok) throw new Error('Network response was not ok');
             return response.json();
         })
         .then(data => {
             if (data.status === 'fail') {
-                throw new Error('Failed to fetch IP data: ' + data.message);
+               // throw new Error('Failed to fetch IP data: ' + data.message);
             }
+            // Update the HTML elements with the received data
             document.getElementById('ip').textContent = data.query;
             document.getElementById('city').textContent = data.city;
             document.getElementById('region').textContent = data.regionName;
@@ -18,35 +26,15 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('zip').textContent = data.zip;
             document.getElementById('lat').textContent = data.lat;
             document.getElementById('lon').textContent = data.lon;
-            document.getElementById('timezone').textContent = data.timezone;
+            document.getElementById('timezoneval').textContent = data.timezone;
             document.getElementById('isp').textContent = data.isp;
             document.getElementById('org').textContent = data.org;
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Failed to fetch IP information. See console for details.');
+         //   alert('Failed to fetch IP information. See console for details.');
         });
+
+    // Set timezone immediately available from the browser's locale settings
+    document.getElementById('timezone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
 });
-
-function startSpeedTest() {
-    const startTime = (new Date()).getTime();
-    const downloadSize = 5000000; // Size of the file in bytes (e.g., 5MB)
-    const url = 'https://yourserver.com/path/to/your/5mbtestfile'; // URL to a 5 MB test file
-
-    fetch(url)
-        .then(response => response.blob())
-        .then(blob => {
-            const endTime = (new Date()).getTime();
-            const duration = (endTime - startTime) / 1000; // Duration in seconds
-            const bitsLoaded = downloadSize * 8;
-            const speedBps = (bitsLoaded / duration).toFixed(2);
-            const speedKbps = (speedBps / 1024).toFixed(2);
-            const speedMbps = (speedKbps / 1024).toFixed(2);
-
-            document.getElementById('download-speed').textContent = speedMbps + ' Mbps';
-        })
-        .catch(error => {
-            console.error('Error during speed test:', error);
-            document.getElementById('download-speed').textContent = 'Test failed';
-        });
-}

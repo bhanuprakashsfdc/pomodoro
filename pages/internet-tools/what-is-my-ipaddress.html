@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/ipaddress.css">
     <style>
         
     </style>
@@ -29,9 +30,23 @@
             <div class="clock" id="clock">00:00:00:000</div>
         </div>
     </div>
+
+
     <div class="timezone-info">
         <p>Your time zone: <span id="timezone"></span></p>
         <p>Your IP address is: <span id="ip-address">Loading...</span></p>
+    </div>
+    <div class="info-table">
+        <div class="info-row"><div class="info-name">IP Address:</div><div class="info-value" id="ip"></div></div>
+        <div class="info-row"><div class="info-name">City:</div><div class="info-value" id="city"></div></div>
+        <div class="info-row"><div class="info-name">Region:</div><div class="info-value" id="region"></div></div>
+        <div class="info-row"><div class="info-name">Country:</div><div class="info-value" id="country"></div></div>
+        <div class="info-row"><div class="info-name">ZIP Code:</div><div class="info-value" id="zip"></div></div>
+        <div class="info-row"><div class="info-name">Latitude:</div><div class="info-value" id="lat"></div></div>
+        <div class="info-row"><div class="info-name">Longitude:</div><div class="info-value" id="lon"></div></div>
+        <div class="info-row"><div class="info-name">Timezone:</div><div class="info-value" id="timezoneval"></div></div>
+        <div class="info-row"><div class="info-name">ISP:</div><div class="info-value" id="isp"></div></div>
+        <div class="info-row"><div class="info-name">Organization:</div><div class="info-value" id="org"></div></div>
     </div>
 
     <footer class="footer">
@@ -39,9 +54,11 @@
     </footer>
     <!-- Script -->
     <script src="/assets/js/liveclockscript.js"></script>
+    <!-- Script -->
     <script src="/assets/js/script.js"></script>
     <script src="/assets/js/timescript.js"></script>
     <script src="/assets/js/ipInfo.js"></script>
+    
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-R32NHWZ7MQ"></script>
         <script>
@@ -49,6 +66,10 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-R32NHWZ7MQ');
+        </script>
+
+        <script>
+            
         </script>
 </body>
 </html>
